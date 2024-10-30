@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartInvest Fund Comparison</title>
+</head>
+<body>
+    <h1>Compare Mutual Funds</h1>
+    <form method="POST">
+        <label for="fund_names">Enter Fund Names (comma separated):</label>
+        <input type="text" id="fund_names" name="fund_names" required>
+        <button type="submit">Compare</button>
+    </form>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if tables %}
+        <h2>Comparison Results</h2>
+        <div>{{ tables|safe }}</div>
+    {% endif %}
+
+    {% if plot_url %}
+        <h2>Comparison Plot</h2>
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Comparison Plot">
+    {% endif %}
+</body>
+</html>
